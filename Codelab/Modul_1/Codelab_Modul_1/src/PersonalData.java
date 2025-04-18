@@ -1,5 +1,5 @@
 import java.util.Scanner; //Mengimpor class Scanner dari paket java.util untuk membaca input dari pengguna.
-import java.time.LocalDate; //Mengimpor class LocalDate dari paket java.time untuk mendapatkan tanggal saat ini.
+import java.time.LocalDate; //Mengimpor class LocalDate dari paket java.time untuk mendapatkan tanggal saat
 
 public class PersonalData {
     public static void main(String[] args) {
