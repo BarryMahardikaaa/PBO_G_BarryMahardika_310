@@ -1,9 +1,15 @@
+package com.praktikum.main;
+
 import java.util.Scanner;
+import com.praktikum.users.User;
+import com.praktikum.users.Admin;
+import com.praktikum.users.Mahasiswa;
 
 // Kelas LoginSystem (sebagai program utama)
 public class LoginSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        User user = null;
 
         System.out.println("==== Sistem Login ====");
         System.out.println("Pilih login sebagai:");
@@ -20,13 +26,7 @@ public class LoginSystem {
             System.out.print("Masukkan password: ");
             String password = scanner.nextLine();
 
-            Admin admin = new Admin("Ahmad Barry Mahardika", "202410370110310", username, password);
-
-            if (admin.login()) {
-                admin.displayInfo();
-            } else {
-                System.out.println("Login gagal! Username atau password salah.");
-            }
+            user = new Admin("Ahmad Barry Mahardika", "202410370110310", username, password);
         } else if (pilihan == 2) {
             // Login sebagai Mahasiswa
             System.out.print("Masukkan nama: ");
@@ -34,15 +34,20 @@ public class LoginSystem {
             System.out.print("Masukkan NIM: ");
             String nim = scanner.nextLine();
 
-            Mahasiswa mahasiswa = new Mahasiswa(nama, nim);
-
-            if (mahasiswa.login()) {
-                mahasiswa.displayInfo();
-            } else {
-                System.out.println("Login gagal! Nama atau NIM salah.");
-            }
+            user = new Mahasiswa(nama, nim);
         } else {
             System.out.println("Pilihan tidak valid!");
+            scanner.close();
+            return;
+        }
+
+        // Verifikasi login dengan polymorphism
+        if (user.login()) {
+            user.displayInfo();
+            // Memanggil displayAppMenu() dengan polymorphism
+            user.displayAppMenu();
+        } else {
+            System.out.println("Login gagal! Ada yang salah nih.");
         }
 
         scanner.close();

@@ -1,5 +1,7 @@
-// Kelas User (sebagai superclass)
-class User {
+package com.praktikum.users;
+
+// Abstract class User sebagai superclass
+public abstract class User {
     // Encapsulation dengan private attributes
     private String nama;
     private String nim;
@@ -27,10 +29,11 @@ class User {
         this.nim = nim;
     }
 
-    // Method login() yang akan di-override oleh subclass
-    public boolean login() {
-        return false;
-    }
+    // Abstract method login() yang akan di-implement oleh subclass
+    public abstract boolean login();
+
+    // Abstract method displayAppMenu() untuk menampilkan menu spesifik peran
+    public abstract void displayAppMenu();
 
     // Method displayInfo() untuk menampilkan informasi pengguna
     public void displayInfo() {
